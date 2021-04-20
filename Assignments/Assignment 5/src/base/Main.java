@@ -33,7 +33,13 @@ public class Main {
     }
 
     static void dry_inventory() {
-        // Your DRY Solution goes here!
+        int[][] customerData = {
+
+        }
+
+        char [] oderArray = { lemonades_available, pretzels_available, tips}
+        String orderArray = 
+
     }
 
     static void wet_inventory() {
