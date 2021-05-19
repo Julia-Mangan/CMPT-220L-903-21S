@@ -25,28 +25,45 @@ public class Main {
     static int pretzels_available = 60;
     static double cash = 1500.0;
     static double tips = 0.0;
-
+    static int lemonade_price = 8;
+    static int pretzel_price = 2;
 
     public static void main(String[] args) {
         //	Replace this with your dry inventory function!
-        wet_inventory();
+        dry_inventory();
     }
 
     static void dry_inventory() {
         int[][] customerData = {
+                {4,1,4},
+                {2,3,0},
+                {3,0,0},
+                {1,2,0},
+                {0,6,10},
+                {0,4,5},
+                {2,0,0},
+                {10,8,10},
+                {6,0,0},
+                {0,1,0},
+                {1,0,0},
+                {0,7,4},
+                {2,0,0},
+                {6,3,0},
+                {9,2,3}
+        };
 
+        for (int[] customer: customerData){
+            itemsPurchased(customer[0], customer[1], customer[2]);
         }
 
-        char [] oderArray = { lemonades_available, pretzels_available, tips}
-        String orderArray = 
 
-    }
 
-    static void wet_inventory() {
+    //static void wet_inventory() {
         /**
          * We have 10 customers in the first hour! This is what they bought! When running this with your dry code you
          * don't want to run this function because then the numbers in the end will be wrong!
          */
+       /*
         //Customer 1
         pretzels_available -= 4;
         cash += 8;
@@ -125,6 +142,16 @@ public class Main {
         lemonades_available -= 2;
         cash += 16;
         tips += 3;
+    */
+        static void itemsPurchased(int pretzel_purchased, int lemonades_Purchased, double tip){
+            cash += pretzel_purchased * pretzel_price;
+            pretzels_available -= pretzel_purchased;
+
+            cash += lemonades_Purchased * lemonade_price;
+            lemonades_available -= lemonades_Purchased;
+
+            tips += tip;
+        }
 
         System.out.println("Results for the hour!");
         System.out.println("Lemonades Inventory: " + lemonades_available);
@@ -132,4 +159,5 @@ public class Main {
         System.out.println("Cash: " + cash);
         System.out.println("Tips: " + tips);
     }
+
 }
