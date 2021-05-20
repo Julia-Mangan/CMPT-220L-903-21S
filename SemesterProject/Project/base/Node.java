@@ -2,10 +2,10 @@ package base;
 
 public class Node {
 
-    int num;
+    public int num;
 
-    Node rightChild;
-    Node leftChild;
+    public Node rightChild;
+    public Node leftChild;
 
     public Node(int num) {
         this.num = num;

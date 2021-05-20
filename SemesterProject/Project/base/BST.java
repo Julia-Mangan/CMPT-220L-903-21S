@@ -1,6 +1,5 @@
 package base;
 
-import javax.swing.*;
 import java.util.Queue;
 import java.util.LinkedList;
 
@@ -91,26 +90,11 @@ public class BST {
 
         return current.num;
     }
-    //Find Nth largest element
-   /* public void NthLargestElement(Node current, int Nth, int count){
-        if (current == null || count >= Nth) {
-            return;
-        }
 
-        System.out.println("recurse: " + current.num + " " + Nth + " " + count);
-        this.NthLargestElement(current.rightChild, Nth, count);
-        count++;
-
-        if (count == Nth){
-            System.out.println("" + Nth + " largest value: " + current.num);
-            return;
-        }
-
-    }
 
     public void NthLargest(int Nth){
-        this.NthLargestElement(this.root, Nth, 0);
-    }*/
+        this.NthLargestElement(this.root, Nth);
+    }
 
     public Node NthLargestElement(Node root, int Nth) {
         Node current = root;
@@ -185,8 +169,7 @@ public class BST {
                 System.out.println("deleting "+data);
                 return root.leftChild;
             } else {
-                // nodes with two nodes
-                // search for min number in right sub tree
+                // tree reorganization
                 Integer minValue = findSmallestElement(root.rightChild);
                 root.num = minValue;
                 root.rightChild = deleteNode(root.rightChild, minValue);

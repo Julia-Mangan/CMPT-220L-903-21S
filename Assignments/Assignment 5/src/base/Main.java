@@ -34,130 +34,41 @@ public class Main {
     }
 
     static void dry_inventory() {
-        int[][] customerData = {
-                {4,1,4},
-                {2,3,0},
-                {3,0,0},
-                {1,2,0},
-                {0,6,10},
-                {0,4,5},
-                {2,0,0},
-                {10,8,10},
-                {6,0,0},
-                {0,1,0},
-                {1,0,0},
-                {0,7,4},
-                {2,0,0},
-                {6,3,0},
-                {9,2,3}
-        };
 
-        for (int[] customer: customerData){
-            itemsPurchased(customer[0], customer[1], customer[2]);
-        }
-
-
-
-    //static void wet_inventory() {
-        /**
-         * We have 10 customers in the first hour! This is what they bought! When running this with your dry code you
-         * don't want to run this function because then the numbers in the end will be wrong!
-         */
-       /*
-        //Customer 1
-        pretzels_available -= 4;
-        cash += 8;
-        lemonades_available -= 1;
-        cash += 8;
-        tips += 4;
-
-        //Customer 2
-        pretzels_available -= 2;
-        cash += 4;
-        lemonades_available -= 3;
-        cash += 24;
-
-        //Customer 3
-        pretzels_available -= 3;
-        cash += 6;
-
-        //Customer 4
-        pretzels_available -= 1;
-        cash += 2;
-        lemonades_available -= 2;
-        cash += 16;
-
-        //Customer 5
-        lemonades_available -= 6;
-        cash += 48;
-        tips += 10;
-
-        //Customer 6
-        lemonades_available -= 4;
-        cash += 32;
-        tips += 5;
-
-        //Customer 7
-        pretzels_available -= 2;
-        cash += 4;
-
-        //Customer 8
-        pretzels_available -= 10;
-        cash += 20;
-        lemonades_available -= 8;
-        cash += 64;
-        tips += 10;
-
-
-        //Customer 9
-        pretzels_available -= 6;
-        cash += 12;
-
-        //Customer 10
-        lemonades_available -= 1;
-        cash += 8;
-
-        //Customer 11
-        pretzels_available -= 1;
-        cash += 2;
-
-        //Customer 12
-        lemonades_available -= 7;
-        cash += 56;
-        tips += 4;
-
-        //Customer 13
-        pretzels_available -= 2;
-        cash += 4;
-
-        //Customer 14
-        pretzels_available -= 6;
-        cash += 12;
-        lemonades_available -= 3;
-        cash += 24;
-
-        //Customer 15
-        pretzels_available -= 9;
-        cash += 18;
-        lemonades_available -= 2;
-        cash += 16;
-        tips += 3;
-    */
-        static void itemsPurchased(int pretzel_purchased, int lemonades_Purchased, double tip){
-            cash += pretzel_purchased * pretzel_price;
-            pretzels_available -= pretzel_purchased;
-
-            cash += lemonades_Purchased * lemonade_price;
-            lemonades_available -= lemonades_Purchased;
-
-            tips += tip;
-        }
+        itemsPurchased(4, 1, 4);
+        itemsPurchased(2, 3, 0);
+        itemsPurchased(3, 0, 0);
+        itemsPurchased(1, 2, 0);
+        itemsPurchased(0, 6, 10);
+        itemsPurchased(0, 4, 5);
+        itemsPurchased(2, 0, 0);
+        itemsPurchased(10, 8, 10);
+        itemsPurchased(6, 0, 0);
+        itemsPurchased(0, 1, 0);
+        itemsPurchased(1, 0, 0);
+        itemsPurchased(0, 7, 4);
+        itemsPurchased(2, 0, 0);
+        itemsPurchased(6, 3, 0);
+        itemsPurchased(9, 2, 3);
 
         System.out.println("Results for the hour!");
         System.out.println("Lemonades Inventory: " + lemonades_available);
         System.out.println("Pretzels Inventory: " + pretzels_available);
         System.out.println("Cash: " + cash);
         System.out.println("Tips: " + tips);
+
     }
+
+    static void itemsPurchased(int pretzel_purchased, int lemonades_Purchased, double tip){
+        cash += pretzel_purchased * pretzel_price;
+        pretzels_available -= pretzel_purchased;
+
+        cash += lemonades_Purchased * lemonade_price;
+        lemonades_available -= lemonades_Purchased;
+
+        tips += tip;
+    }
+
+
 
 }

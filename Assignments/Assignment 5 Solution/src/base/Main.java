@@ -60,6 +60,9 @@ public class Main {
             {9,2,3}
         };
 
+        itemsPurchased(4,1,4);
+
+
         for (int[] customer: customerData){
             itemsPurchased(customer[0], customer[1], customer[2]);
         }

@@ -19,7 +19,7 @@ public class Main {
         System.out.println("Largest Element: " + BT.largestElement());
         int nTh = 5;
         System.out.println(nTh + "th Largest Element: " + BT.NthLargestElement(BT.root, nTh).num);
-        BT.deleteNode(BT.root, 5);
+        BT.deleteNode(BT.root, 4);
         System.out.print("Reorganized root: ");
         BT.printRoot();
         System.out.println("Height: " + BT.height(BT.root));
