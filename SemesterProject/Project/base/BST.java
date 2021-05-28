@@ -5,14 +5,15 @@ import java.util.LinkedList;
 
 public class BST {
     Node root;
-
+// Insert Element into the BST
     private Node insertElement(Node current, int num) {
         if (current == null) {
             return new Node(num);
         }
-
+// values less than the root go on the left
         if (num < current.num) {
             current.leftChild = insertElement(current.leftChild, num);
+// values greater than the root go on the right
         } else if (num > current.num) {
             current.rightChild = insertElement(current.rightChild, num);
         } else {
@@ -34,6 +35,7 @@ public class BST {
     }
 
 // Find element
+// Tells if value is a node or not in the BST
     public void search(Node current, int num) {
         if (current == null) {
             System.out.println(num + " is not part of the Binary Search Tree.");
@@ -64,34 +66,37 @@ public class BST {
             if(left > right){
                 return 1 + left;
             }
+            //add 1 to accommodate for the root
             else{
                 return 1 + right;
             }
         }
     }
     //Find smallest element
+    //Smallest child is on the left of the tree
     public int findSmallestElement(Node cur) {
         Node current = cur;
         while (current.leftChild != null) {
             current = current.leftChild;
         }
-
+    //If there is no left child, return the root
         return current.num;
     }
     public int smallestElement() {
         return findSmallestElement(this.root);
     }
     //Find largest element
+    //Largest element is on the right of the tree
     public int largestElement() {
         Node current = this.root;
         while (current.rightChild != null) {
             current = current.rightChild;
         }
-
+    //If there is no right child, return the root
         return current.num;
     }
 
-
+//Find the Nth largest element
     public void NthLargest(int Nth){
         this.NthLargestElement(this.root, Nth);
     }
@@ -100,22 +105,19 @@ public class BST {
         Node current = root;
         Node NthLargest = null;
 
-        // count variable to keep count of visited Nodes
         int count = 0;
-
+        // if current is not null
         while (current != null) {
-            // if right child is NULL
+            // if right child is null
             if (current.rightChild == null) {
 
-                // first increment count and check if count = k
                 if (++count == Nth)
                     NthLargest = current;
 
-                // otherwise move to the left child
+                //stop looking at right and look at left
                 current = current.leftChild;
             } else {
 
-                // find inorder successor of current Node
                 Node order = current.rightChild;
 
                 while (order.leftChild != null && order.leftChild != current)
@@ -123,16 +125,12 @@ public class BST {
 
                 if (order.leftChild == null) {
 
-                    // set left child of successor to the
-                    // current Node
                     order.leftChild = current;
 
                     // move current to its right
                     current = current.rightChild;
                 }
 
-                // restoring the tree back to original binary
-                // search tree removing threaded links
                 else {
 
                     order.leftChild = null;
@@ -140,20 +138,22 @@ public class BST {
                     if (++count == Nth)
                         NthLargest = current;
 
-                    // move current to its left child
                     current = current.leftChild;
                 }
             }
         }
         return NthLargest;
     }
+    // delete nodes from BST
     public Node deleteNode(Node root, int data) {
 
         if(root == null) return root;
 
         if(data < root.num) {
+            //delete leftChild
             root.leftChild = deleteNode(root.leftChild, data);
         } else if(data > root.num) {
+            //delete rightChild
             root.rightChild = deleteNode(root.rightChild, data);
         } else {
             // node with no leaf nodes
@@ -176,10 +176,11 @@ public class BST {
                 System.out.println("deleting "+data);
             }
         }
-
+//There will be a new root if current root is deleted
         return root;
     }
-
+//In order Traversal
+//Depth first search is the same as the three Traversals
     public void inorderTraversal(Node root)
     {
         if (root == null)
@@ -194,7 +195,7 @@ public class BST {
 //        search for the right children
         inorderTraversal(root.rightChild);
     }
-
+// Post order traversal
     public void postorderTraversal(Node root) {
         if (root == null)
             return;
@@ -208,7 +209,7 @@ public class BST {
 //        print the leaves first and move up the tree
         System.out.print(root.num + " ");
     }
-
+// Pre order traversal
     public void preorderTraversal(Node root)
     {
         if (root == null)
